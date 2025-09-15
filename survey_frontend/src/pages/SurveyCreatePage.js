@@ -112,7 +112,15 @@ export default function SurveyCreatePage() {
 
       navigate(`/survey/${survey.id}`);
     } catch (e) {
-      setErr(e.message);
+      let message = e?.message || String(e);
+      const lower = message.toLowerCase();
+      // Helpful hints for common setup issues
+      if (lower.includes('foreign key') && lower.includes('created_by')) {
+        message += '\n\nHint: Your profile may be missing in the "users" table. Sign out and sign back in to let the app create/ensure a users row (or check RLS policies on public.users).';
+      } else if (lower.includes('rls') || lower.includes('row level security') || lower.includes('permission')) {
+        message += '\n\nHint: Check your Supabase RLS policies. Ensure authenticated users can INSERT into "surveys", "questions", and "options".';
+      }
+      setErr(message);
     } finally {
       setSaving(false);
     }
