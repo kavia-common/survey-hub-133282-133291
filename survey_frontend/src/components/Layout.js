@@ -12,6 +12,7 @@ export default function Layout({ children }) {
           <Link to="/" className="font-bold text-lg text-white">Survey Hub</Link>
           <nav className="flex items-center gap-3 text-sm">
             <Link to="/surveys" className="text-slate-300 hover:text-white">Browse</Link>
+            <Link to="/diagnostics" className="text-slate-300 hover:text-white">Diagnostics</Link>
             {user ? (
               <>
                 <Link to="/create" className="text-slate-300 hover:text-white">Create</Link>

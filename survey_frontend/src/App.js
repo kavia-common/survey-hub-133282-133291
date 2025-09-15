@@ -10,6 +10,7 @@ import SurveyCreatePage from './pages/SurveyCreatePage';
 import SurveyListPage from './pages/SurveyListPage';
 import SurveyParticipatePage from './pages/SurveyParticipatePage';
 import SurveyResultsPage from './pages/SurveyResultsPage';
+import DiagnosticsPage from './pages/DiagnosticsPage';
 
 // PUBLIC_INTERFACE
 function RequireAuth({ children }) {
@@ -53,6 +54,7 @@ function App() {
             <Route path="/survey/:id" element={<SurveyParticipatePage />} />
             <Route path="/results" element={<RequireAuth><div>Select a survey from Browse to view results.</div></RequireAuth>} />
             <Route path="/results/:id" element={<RequireAuth><SurveyResultsPage /></RequireAuth>} />
+            <Route path="/diagnostics" element={<DiagnosticsPage />} />
             <Route path="*" element={<div>Not found</div>} />
           </Routes>
         </Layout>
